@@ -150,7 +150,7 @@ class Grafo:
         lista_auxiliar=[]
         for i in range(1, self.n+1):
             pai, nivel, Mais_Distante= self.BFS_Mais_Distante(i)
-            lista_auxiliar.append(Mais_Distante)
+            lista_auxiliar.append(nivel[Mais_Distante-1])
         diametro= max(lista_auxiliar)
         return diametro    
 
@@ -182,7 +182,7 @@ class Grafo:
         vertice=random.randint(1, self.n)
         pai, nivel, Mais_Distante= self.BFS_Mais_Distante(vertice)      #Encontrando um vértice afastado do grafo
         pai, nivel, Mais_Distante= self.BFS_Mais_Distante(Mais_Distante)    #Aproximando o diâmetro a partir do vértice mais distante de um vértice afastado do grafo
-        DiametroAprox= Mais_Distante
+        DiametroAprox= nivel[Mais_Distante-1]
         return DiametroAprox
 
     def CriarTxt(self):
