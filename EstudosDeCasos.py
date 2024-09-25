@@ -48,7 +48,6 @@ class Grafo:
         
     def BFS(self, raiz):
         #Função para realizar uma busca em largura no grafo
-        start_time = time.time()  # Inicia a medição de tempo
         pai=[None]*self.n
         nivel=[0]*self.n
         marcados=[False]*self.n
@@ -76,13 +75,9 @@ class Grafo:
             infoBFS.write('\n')
             for i in range(self.n):
                 infoBFS.write(f'Vértice {i+1}: Pai: {pai[i]}, Nível: {nivel[i]}\n')
-        end_time = time.time()  # Finaliza a medição de tempo
-        exec_time = end_time - start_time
-        return exec_time
 
     def DFS(self,raiz):
         #Função para realizar uma busca em profundidade no grafo
-        start_time = time.time()  # Inicia a medição de tempo
         pai=[None]*self.n
         nivel=[0]*self.n
         marcados=[False]*self.n
@@ -109,9 +104,6 @@ class Grafo:
             infoDFS.write('\n')
             for i in range(self.n):
                 infoDFS.write(f'Vértice {i+1}: Pai: {pai[i]}, Nível: {nivel[i]}\n')
-        end_time = time.time()  # Finaliza a medição de tempo
-        exec_time = end_time - start_time
-        return exec_time
 
     def BFS_Mais_Distante(self, raiz):
         #Função para realizar uma busca em largura no grafo e determinar o vértice mais distante da raiz
@@ -158,7 +150,7 @@ class Grafo:
         lista_auxiliar=[]
         for i in range(1, self.n+1):
             pai, nivel, Mais_Distante= self.BFS_Mais_Distante(i)
-            lista_auxiliar.append(Mais_Distante)
+            lista_auxiliar.append(nivel[Mais_Distante-1])
         diametro= max(lista_auxiliar)
         return diametro    
 
@@ -190,7 +182,7 @@ class Grafo:
         vertice=random.randint(1, self.n)
         pai, nivel, Mais_Distante= self.BFS_Mais_Distante(vertice)      #Encontrando um vértice afastado do grafo
         pai, nivel, Mais_Distante= self.BFS_Mais_Distante(Mais_Distante)    #Aproximando o diâmetro a partir do vértice mais distante de um vértice afastado do grafo
-        DiametroAprox= Mais_Distante
+        DiametroAprox= nivel[Mais_Distante-1]
         return DiametroAprox
 
     def CriarTxt(self):
@@ -211,6 +203,7 @@ class Grafo:
             info.write('\n')
             info.write('Informações das Componentes Conexas:\n')
             info.write(self.ComponentesConexas())	
+
 
 #Estudos de Casos
 #Exemplos para o Grafo 1 com representação em Lista
