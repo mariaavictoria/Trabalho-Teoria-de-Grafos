@@ -219,6 +219,9 @@ class Grafo:
 Objeto_Teste=Grafo('Lista')
 Objeto_Teste.ImportarTxt('grafo_1.txt')
 
+#Estudo de Caso 1 (Comparar o desempenho de memória para os dois tipos de representação do grafo)
+#(Nós pausamos a execução do código e vimos a quantidade de memória gasta por ele no sistema)
+
 #Estudo de Caso 2 (Executar 100 vezes a Busca em Largura e calcular a média do tempo de execução)
 Objeto_Teste.BFS(1) #Ex: Busca em Largura no grafo com raiz no vértice 1 
 
