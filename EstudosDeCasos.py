@@ -48,6 +48,7 @@ class Grafo:
         
     def BFS(self, raiz):
         #Função para realizar uma busca em largura no grafo
+        start_time = time.time()  # Inicia a medição de tempo
         pai=[None]*self.n
         nivel=[0]*self.n
         marcados=[False]*self.n
@@ -75,9 +76,13 @@ class Grafo:
             infoBFS.write('\n')
             for i in range(self.n):
                 infoBFS.write(f'Vértice {i+1}: Pai: {pai[i]}, Nível: {nivel[i]}\n')
+        end_time = time.time()  # Finaliza a medição de tempo
+        exec_time = end_time - start_time
+        return exec_time
 
     def DFS(self,raiz):
         #Função para realizar uma busca em profundidade no grafo
+        start_time = time.time()  # Inicia a medição de tempo
         pai=[None]*self.n
         nivel=[0]*self.n
         marcados=[False]*self.n
@@ -104,6 +109,9 @@ class Grafo:
             infoDFS.write('\n')
             for i in range(self.n):
                 infoDFS.write(f'Vértice {i+1}: Pai: {pai[i]}, Nível: {nivel[i]}\n')
+        end_time = time.time()  # Finaliza a medição de tempo
+        exec_time = end_time - start_time
+        return exec_time
 
     def BFS_Mais_Distante(self, raiz):
         #Função para realizar uma busca em largura no grafo e determinar o vértice mais distante da raiz
